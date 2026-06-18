@@ -1,0 +1,94 @@
+============================================================
+📊 ONLINE STORE ORDERS ANALYSIS REPORT
+Generated: 2026-06-06 22:06:50
+============================================================
+
+📦 Total Orders: 1200
+💰 Total Revenue: $1,264,761.96
+
+📋 Order Status Breakdown:
+   Cancelled: 250 orders
+   Returned: 247 orders
+   Pending: 237 orders
+   Shipped: 235 orders
+   Delivered: 231 orders
+
+🏆 Top 5 Best Selling Products (by quantity):
+   Chair: 562 units
+   Printer: 542 units
+   Laptop: 535 units
+   Desk: 508 units
+   Tablet: 497 units
+
+📉 Bottom 5 Worst Selling Products (by quantity):
+   Laptop: 535 units
+   Desk: 508 units
+   Tablet: 497 units
+   Monitor: 480 units
+   Phone: 411 units
+
+❌ Top 5 Most Cancelled Products:
+   Chair: 142 units cancelled
+   Laptop: 113 units cancelled
+   Printer: 112 units cancelled
+   Desk: 107 units cancelled
+   Tablet: 103 units cancelled
+
+💳 Payment Method Usage:
+   Online: 258 orders
+   Cash: 246 orders
+   Credit Card: 234 orders
+   Debit Card: 232 orders
+   Gift Card: 230 orders
+
+📢 Top Referral Source:
+   Instagram: 259 orders
+   Email: 250 orders
+   Google: 241 orders
+   Facebook: 228 orders
+   Referral: 222 orders
+
+🎟️ Coupon Usage:
+   Orders with coupon: 891 (74.2%)
+   Revenue from coupon orders: $942,360.55
+   Most used coupon: FREESHIP
+
+📅 Monthly Revenue Trend:
+   2023-01: $56,685.75
+   2023-02: $40,117.66
+   2023-03: $48,609.37
+   2023-04: $27,751.71
+   2023-05: $63,836.84
+   2023-06: $49,500.19
+   2023-07: $42,820.66
+   2023-08: $54,352.14
+   2023-09: $29,526.67
+   2023-10: $52,607.85
+   2023-11: $43,079.67
+   2023-12: $43,754.73
+   2024-01: $38,528.08
+   2024-02: $36,909.57
+   2024-03: $36,030.90
+   2024-04: $49,613.14
+   2024-05: $27,909.11
+   2024-06: $68,068.54
+   2024-07: $42,963.98
+   2024-08: $31,991.07
+   2024-09: $39,794.98
+   2024-10: $37,226.97
+   2024-11: $32,413.76
+   2024-12: $38,785.77
+   2025-01: $29,099.40
+   2025-02: $35,317.55
+   2025-03: $39,200.66
+   2025-04: $31,821.20
+   2025-05: $43,396.64
+   2025-06: $53,047.40
+
+💡 KEY INSIGHTS:
+   - Best selling product: Chair (562 units)
+   - Worst selling product: Phone (411 units)
+   - Most common order status: Cancelled (250 orders)
+   - Highest revenue month: 2024-06 ($68,068.54)
+============================================================
+✅ Analysis complete. Report saved as 'analysis_report.txt'

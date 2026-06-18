@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empathy Map – Fitness App for Busy Professionals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f9;
+            padding: 40px 24px;
+            color: #1e2a3e;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #0f3b5c, #1b6b8f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #3a6b8c;
+        }
+
+        /* Persona Card */
+        .persona {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            padding: 32px;
+            margin-bottom: 48px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            border-left: 8px solid #00a8cc;
+            transition: all 0.2s;
+        }
+
+        .persona-avatar {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .persona-avatar .avatar-icon {
+            font-size: 90px;
+            background: #e6f4ff;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .persona-details {
+            flex: 3;
+        }
+
+        .persona-details h2 {
+            font-size: 1.9rem;
+            color: #0f3b5c;
+            margin-bottom: 6px;
+        }
+
+        .persona-details .tagline {
+            font-weight: 600;
+            color: #00a8cc;
+            margin-bottom: 24px;
+            font-size: 1rem;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .info-box {
+            background: #f8fafc;
+            padding: 20px 24px;
+            border-radius: 24px;
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid #e2edf2;
+        }
+
+        .info-box h3 {
+            font-size: 1.2rem;
+            color: #1e4a6b;
+            margin-bottom: 14px;
+            border-left: 4px solid #00a8cc;
+            padding-left: 12px;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-box li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Empathy Map Grid */
+        .empathy-title {
+            font-size: 1.9rem;
+            margin: 20px 0 12px;
+            color: #0f3b5c;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 28px;
+            color: #4a6f8f;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 26px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 30px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            line-height: 1.5;
+            color: #2c3e50;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .card ul {
+            padding-left: 22px;
+            color: #2c3e50;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        /* Quadrant colors */
+        .says { border-top: 6px solid #3498db; }
+        .does { border-top: 6px solid #e67e22; }
+        .thinks { border-top: 6px solid #2ecc71; }
+        .feels { border-top: 6px solid #e74c3c; }
+
+        /* External / Internal badges */
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #eef2f5;
+            padding: 4px 10px;
+            border-radius: 30px;
+            margin-left: 12px;
+            vertical-align: middle;
+            font-weight: normal;
+        }
+
+        /* Friction Points Section */
+        .friction {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            margin: 40px 0 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .friction h2 {
+            color: #0f3b5c;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.7rem;
+        }
+
+        .friction-quote {
+            font-style: italic;
+            color: #2c5a7a;
+            margin-bottom: 28px;
+            padding-left: 16px;
+            border-left: 4px solid #00a8cc;
+        }
+
+        .friction-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .friction-card {
+            flex: 1;
+            background: #fefaf5;
+            padding: 22px;
+            border-radius: 24px;
+            border-left: 6px solid #e67e22;
+            transition: all 0.2s;
+        }
+
+        .friction-card:nth-child(2) { border-left-color: #f1c40f; background: #fffdf7; }
+        .friction-card:nth-child(3) { border-left-color: #2ecc71; background: #f5fbf8; }
+
+        .friction-card h3 {
+            color: #c0392b;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .friction-card p {
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        .failure-summary {
+            background: #eaf4e8;
+            padding: 18px 22px;
+            border-radius: 20px;
+            margin-top: 20px;
+            font-weight: 500;
+            color: #1e4a2f;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 24px;
+            background: #e2edf2;
+            border-radius: 28px;
+            font-size: 0.9rem;
+            color: #1e4a6b;
+        }
+
+        @media (max-width: 750px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .persona {
+                flex-direction: column;
+                text-align: center;
+            }
+            .persona-avatar .avatar-icon {
+                margin: 0 auto;
+            }
+            .info-box h3 {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>📋 Empathy Map & User Persona</h1>
+        <p>Fitness app for busy office professionals | DecodeLabs UX Project 1</p>
+    </div>
+
+    <!-- User Persona Section -->
+    <div class="persona">
+        <div class="persona-avatar">
+            <div class="avatar-icon">👩‍💼</div>
+        </div>
+        <div class="persona-details">
+            <h2>Ayesha</h2>
+            <div class="tagline">Senior Marketing Manager | 34 years old | Karachi</div>
+            <div class="info-grid">
+                <div class="info-box">
+                    <h3>🎯 Goals</h3>
+                    <ul>
+                        <li>✅ Lose 8 kg in 3 months</li>
+                        <li>✅ Build a sustainable workout habit</li>
+                        <li>✅ Reduce back pain from sitting 9+ hours</li>
+                        <li>✅ Find 20-min workouts that fit between meetings</li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <h3>😫 Frustrations</h3>
+                    <ul>
+                        <li>⏰ Back-to-back meetings from 10 AM to 6 PM</li>
+                        <li>🚗 1.5 hour commute = zero energy left</li>
+                        <li>📱 Existing apps feel too complicated or gym-focused</li>
+                        <li>😴 "I'll start tomorrow" loop for 2 years</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="empathy-title">🧠 Empathy Map – What's inside Priya's world?</h2>
+    <div class="subtitle">
+        <span style="background:#eef2f5; padding:4px 12px; border-radius:40px;">External → what they SAY & DO</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span style="background:#eef2f5; padding:4px 12px; border-radius:40px;">Internal → what they THINK & FEEL</span>
+    </div>
+
+    <div class="grid">
+        <!-- SAYS (External) -->
+        <div class="card says">
+            <h3>💬 SAYS <span class="badge">External</span></h3>
+            <p><em>Outward complaints & excuses</em></p>
+            <ul>
+                <li>"I literally have zero time to exercise."</li>
+                <li>"I'll join the gym next month."</li>
+                <li>"Work is too hectic right now."</li>
+                <li>"I'm too tired after office."</li>
+            </ul>
+        </div>
+
+        <!-- DOES (External) -->
+        <div class="card does">
+            <h3>🏃 DOES <span class="badge">External</span></h3>
+            <p><em>Observable habits & actions</em></p>
+            <ul>
+                <li>Drinks 4–5 cups of coffee daily</li>
+                <li>Skips lunch to finish presentations</li>
+                <li>Buys gym bag but never uses it</li>
+                <li>Scrolls social media during short breaks instead of moving</li>
+            </ul>
+        </div>
+
+        <!-- THINKS (Internal) -->
+        <div class="card thinks">
+            <h3>🧠 THINKS <span class="badge">Internal</span></h3>
+            <p><em>Private worries & inner voice</em></p>
+            <ul>
+                <li>"I'm falling behind my peers health-wise."</li>
+                <li>"My body feels weak and heavy."</li>
+                <li>"Why can't I just be consistent?"</li>
+                <li>"I feel guilty every time I skip a workout."</li>
+            </ul>
+        </div>
+
+        <!-- FEELS (Internal) -->
+        <div class="card feels">
+            <h3>❤️ FEELS <span class="badge">Internal</span></h3>
+            <p><em>Emotions & deep struggles</em></p>
+            <ul>
+                <li>😣 Overwhelmed by work-life imbalance</li>
+                <li>😔 Ashamed of her fitness decline</li>
+                <li>😟 Anxious about health reports</li>
+                <li>😤 Frustrated that nothing works for her schedule</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Barriers to Entry (Friction Points) – exactly from PDF -->
+    <div class="friction">
+        <h2>⚡ The Barriers to Entry (Friction Points)</h2>
+        <div class="friction-quote">“Design for their worst day, not their best.”</div>
+        <div class="friction-grid">
+            <div class="friction-card">
+                <h3>1️⃣ Back-to-back meetings</h3>
+                <p>No 30-min free slot. Even lunch is eaten at desk while typing. The calendar is a wall of red.</p>
+            </div>
+            <div class="friction-card">
+                <h3>2️⃣ Commute exhaustion</h3>
+                <p>1.5 hours travel each way. Leaves home at 7 AM, returns at 8 PM. Zero energy for any complex routine.</p>
+            </div>
+            <div class="friction-card">
+                <h3>3️⃣ Mental fatigue = zero motivation</h3>
+                <p>After 50+ Slack messages and 6 hours of Zoom, brain is fried. Can't think about workout plans or meal prep.</p>
+            </div>
+        </div>
+        <div class="failure-summary">
+            📌 <strong>Why existing fitness apps fail for her:</strong> They assume she has energy, time, and a gym nearby. She needs 7-minute desk exercises, habit stacking, and guilt‑free rest days.
+        </div>
+    </div>
+
+    <div class="footer">
+        🧩 <strong>Insight:</strong> Ayesha doesn't need a gym. She needs micro-workouts, habit stacking, and guilt‑free rest days.
+        <br>Design for her worst day (exhausted, 10 PM) – not her best. 
+        <br><span style="font-size:0.8rem;"></span>
+    </div>
+</div>
+</body>
+</html>
